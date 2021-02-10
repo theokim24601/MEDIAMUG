@@ -1,0 +1,6 @@
+framework module Pods_MEDIAMUG {
+  umbrella header "Pods-MEDIAMUG-umbrella.h"
+
+  export *
+  module * { export * }
+}

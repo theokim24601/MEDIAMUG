@@ -1,0 +1,24 @@
+PODS:
+  - ExytePopupView (0.0.11)
+  - WaterfallGrid (1.0.0)
+  - YouTubePlayer (0.7.2)
+
+DEPENDENCIES:
+  - ExytePopupView
+  - WaterfallGrid
+  - YouTubePlayer
+
+SPEC REPOS:
+  trunk:
+    - ExytePopupView
+    - WaterfallGrid
+    - YouTubePlayer
+
+SPEC CHECKSUMS:
+  ExytePopupView: 839284f035de40c1633ad3989b15c06469da5478
+  WaterfallGrid: e362184345ecea6bed67fe2b87beb78798df0b74
+  YouTubePlayer: 2b5f2830d8f9b2cde942083211291e382c9e6bd5
+
+PODFILE CHECKSUM: 4a7dfeee742851fe008637e4a67371b8464f472c
+
+COCOAPODS: 1.10.0

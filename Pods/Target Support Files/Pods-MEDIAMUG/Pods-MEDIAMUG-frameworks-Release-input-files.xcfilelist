@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-MEDIAMUG/Pods-MEDIAMUG-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ExytePopupView/ExytePopupView.framework
+${BUILT_PRODUCTS_DIR}/WaterfallGrid/WaterfallGrid.framework
+${BUILT_PRODUCTS_DIR}/YouTubePlayer/YouTubePlayer.framework
