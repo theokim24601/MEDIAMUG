@@ -17,13 +17,6 @@ protocol MugService {
 
 class MugMediaService: MugService {
 
-  lazy var operationQueue: OperationQueue = {
-      let queue = OperationQueue()
-      queue.maxConcurrentOperationCount = 10
-    queue.qualityOfService = .userInteractive
-      return queue
-  }()
-
   @Storage(key: "link_items", defaultValue: [])
   var linkItems: [LinkItem]
   @Storage(key: "is_first_load", defaultValue: true)
@@ -34,10 +27,6 @@ class MugMediaService: MugService {
       linkItems = ["https://developer.apple.com/news/"].map(LinkItem.init)
       isFirstLoad = false
     }
-    linkItems = []
-//    linkItems = [ "https://medium.com/official-podo/ios-clean-architecture-with-tdd-2-entities-use-cases-81be5a714a14", "https://medium.com/charged-tech/apple-just-told-the-world-it-has-no-idea-who-the-mac-is-for-722a2438389b"].map(LinkItem.init)
-
-//    linkItems = [ "https://medium.com/official-podo/ios-clean-architecture-with-tdd-2-entities-use-cases-81be5a714a14", "https://medium.com/charged-tech/apple-just-told-the-world-it-has-no-idea-who-the-mac-is-for-722a2438389b", "", "", "", "", "", "", "", "", ""].map(LinkItem.init)
   }
 
   func getLinkItems() -> AnyPublisher<[LinkItem], MugError> {

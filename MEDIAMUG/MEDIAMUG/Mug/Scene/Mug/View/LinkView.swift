@@ -7,7 +7,6 @@
 
 import SwiftUI
 import AVKit
-import ActivityIndicatorView
 
 struct LinkView: View {
   @StateObject var viewModel: LinkViewModel

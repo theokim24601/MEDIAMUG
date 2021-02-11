@@ -108,7 +108,7 @@ extension MugView {
           }
         }
         .frame(width: calculateIOSLinkViewWidth(size), height: 200)
-        .background(Color.secondary.opacity(0.05))
+        .background(Color.secondary.opacity(0.1))
         .cornerRadius(20)
       })
     } else {
