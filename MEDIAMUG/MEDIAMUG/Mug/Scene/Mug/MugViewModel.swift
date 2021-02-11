@@ -104,13 +104,10 @@ final class MugViewModel: ObservableObject, Identifiable {
   }
 
   private func bindOutputs() {
-    func deleteHandler(linkId: String) {
-      apply(.deleteLink(linkId))
-    }
     responseSubject
       .map {
-        $0.map { [deleteHandler] linkItem in
-          LinkViewModel(linkItem: linkItem, deleteHandler: deleteHandler)
+        $0.map { [weak self] linkItem in
+          LinkViewModel(linkItem: linkItem, deleteHandler: self?.deleteHandler)
         }
       }
       .receive(on: DispatchQueue.main)
@@ -125,19 +122,23 @@ final class MugViewModel: ObservableObject, Identifiable {
 
     copyClipSubject
       .receive(on: DispatchQueue.main)
-      .handleEvents(receiveOutput: { clipString in
-        self.clipString = clipString
+      .handleEvents(receiveOutput: { [weak self] clipString in
+        self?.clipString = clipString
       })
       .map { $0.isValidLink }
       .assign(to: \.showClipboardToast, on: self)
       .store(in: &cancellables)
 
     errorSubject
-      .handleEvents(receiveOutput: { error in
-        self.errorMessage = "유효한 링크가 아닙니다"
+      .handleEvents(receiveOutput: { [weak self] error in
+        self?.errorMessage = "유효한 링크가 아닙니다"
       })
       .map { _ in true }
       .assign(to: \.showError, on: self)
       .store(in: &cancellables)
+  }
+
+  func deleteHandler(linkId: String) {
+    apply(.deleteLink(linkId))
   }
 }

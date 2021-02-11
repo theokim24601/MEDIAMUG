@@ -34,7 +34,8 @@ class MugMediaService: MugService {
       linkItems = ["https://developer.apple.com/news/"].map(LinkItem.init)
       isFirstLoad = false
     }
-    linkItems = [ "https://medium.com/official-podo/ios-clean-architecture-with-tdd-2-entities-use-cases-81be5a714a14", "https://medium.com/charged-tech/apple-just-told-the-world-it-has-no-idea-who-the-mac-is-for-722a2438389b"].map(LinkItem.init)
+    linkItems = []
+//    linkItems = [ "https://medium.com/official-podo/ios-clean-architecture-with-tdd-2-entities-use-cases-81be5a714a14", "https://medium.com/charged-tech/apple-just-told-the-world-it-has-no-idea-who-the-mac-is-for-722a2438389b"].map(LinkItem.init)
 
 //    linkItems = [ "https://medium.com/official-podo/ios-clean-architecture-with-tdd-2-entities-use-cases-81be5a714a14", "https://medium.com/charged-tech/apple-just-told-the-world-it-has-no-idea-who-the-mac-is-for-722a2438389b", "", "", "", "", "", "", "", "", ""].map(LinkItem.init)
   }

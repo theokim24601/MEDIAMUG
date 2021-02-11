@@ -25,21 +25,6 @@ public struct MugView: View {
 
 // MARK: - Shared
 extension MugView {
-  func createGrid(_ size: CGSize) -> some View {
-    ScrollView(.vertical, showsIndicators: false) {
-      WaterfallGrid(viewModel.dataSource, id:\.self) { viewModel in
-        LinkView(viewModel: viewModel)
-      }
-      .gridStyle(
-        columns: Int(max(size.width / 320, 1)),
-        spacing: 16,
-        animation: .easeInOut(duration: 0.5)
-      )
-//      .frame(minWidth: 0, idealWidth: size.width, maxWidth: size.width, minHeight: size.height, idealHeight: size.height, maxHeight: size.height)
-      .padding(EdgeInsets(top: 32, leading: 8, bottom: 64, trailing: 8))
-    }
-  }
-
   func createRefreshButton() -> some View {
     Button(action: {
       viewModel.apply(.onAppear)
@@ -48,6 +33,10 @@ extension MugView {
         .imageScale(.large)
         .foregroundColor(.primary)
     }
+  }
+
+  func getColumns(_ size: CGSize) -> Int {
+    Int(max(size.width / 320, 1))
   }
 }
 
@@ -58,7 +47,7 @@ extension MugView {
       ZStack {
         NavigationView {
           VStack {
-            createGrid(geometry.size)
+            createIOSGrid(geometry.size)
               .navigationTitle("MEDIAMUG")
               .navigationBarItems(
                 trailing:
@@ -86,6 +75,46 @@ extension MugView {
     .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
       guard let clipString = UIPasteboard.general.string else { return }
       viewModel.apply(.copyClip(clipString))
+    }
+  }
+
+  func createIOSGrid(_ size: CGSize) -> some View {
+    ScrollView(.vertical, showsIndicators: false) {
+      createIOSGridBody(size)
+        .gridStyle(
+          columns: getColumns(size),
+          spacing: 16,
+          animation: .easeInOut(duration: 0.5)
+        )
+        .padding(EdgeInsets(top: 32, leading: 8, bottom: 64, trailing: 8))
+    }
+  }
+
+  func createIOSGridBody(_ size: CGSize) -> some View {
+    if viewModel.dataSource.isEmpty {
+      return AnyView(WaterfallGrid(0..<1, id:\.self) { _ in
+        HStack(spacing: 8) {
+          Text("Try adding your first link")
+            .lineLimit(3)
+            .font(Font.system(size: 15, weight: .medium))
+            .foregroundColor(Color.secondary.opacity(0.8))
+
+          Button(action: {
+            viewModel.showInputPopup.toggle()
+          }) {
+            Image(systemName: "plus.circle")
+              .imageScale(.large)
+              .foregroundColor(.green)
+          }
+        }
+        .frame(width: calculateIOSLinkViewWidth(size), height: 200)
+        .background(Color.secondary.opacity(0.05))
+        .cornerRadius(20)
+      })
+    } else {
+      return AnyView(WaterfallGrid(viewModel.dataSource, id:\.self) { viewModel in
+        LinkView(viewModel: viewModel, width: calculateIOSLinkViewWidth(size))
+      })
     }
   }
 
@@ -130,14 +159,14 @@ extension MugView {
             let validImage = Image(systemName: "checkmark.circle.fill")
               .imageScale(.large)
               .foregroundColor(.green)
-            let validText = Text("valid!!")
+            let validText = Text("Valid Link")
               .font(Font.system(size: 14, weight: .medium))
               .foregroundColor(.green)
 
             let invalidImage = Image(systemName: "xmark.circle.fill")
               .imageScale(.large)
               .foregroundColor(.red)
-            let invalidText = Text("invalid!!")
+            let invalidText = Text("Invalid Link. check again")
               .font(Font.system(size: 14, weight: .medium))
               .foregroundColor(.red)
 
@@ -255,6 +284,12 @@ extension MugView {
     .cornerRadius(26.0)
     .shadow(color: .gray, radius: 5)
   }
+
+  func calculateIOSLinkViewWidth(_ size: CGSize) -> CGFloat {
+    let columns = getColumns(size)
+    let padding = CGFloat((columns - 1) * 16 + 16)
+    return (size.width - padding) / CGFloat(columns)
+  }
 }
 
 // MARK: - Catalyst
@@ -265,7 +300,7 @@ extension MugView {
         NavigationView {
           VStack {
             createCatalystInput(geometry.size)
-            createGrid(geometry.size)
+            createCatalystGrid(geometry.size)
               .navigationTitle("MEDIAMUG")
               .navigationBarItems(
                 trailing:
@@ -284,6 +319,20 @@ extension MugView {
 //      guard let clipString = UIPasteboard.general.string else { return }
 //      viewModel.apply(.copyClip(clipString))
 //    }
+  }
+
+  func createCatalystGrid(_ size: CGSize) -> some View {
+    ScrollView(.vertical, showsIndicators: false) {
+      WaterfallGrid(viewModel.dataSource, id:\.self) { viewModel in
+        LinkView(viewModel: viewModel, width: calculateCatalystLinkViewWidth(size))
+      }
+      .gridStyle(
+        columns: getColumns(size),
+        spacing: 16,
+        animation: .easeInOut(duration: 0.5)
+      )
+      .padding(EdgeInsets(top: 32, leading: 8, bottom: 64, trailing: 8))
+    }
   }
 
   func createCatalystInput(_ size: CGSize) -> some View {
@@ -326,6 +375,10 @@ extension MugView {
     }
     .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 48, maxHeight: 48)
+  }
+
+  func calculateCatalystLinkViewWidth(_ size: CGSize) -> CGFloat {
+    return 312
   }
 }
 

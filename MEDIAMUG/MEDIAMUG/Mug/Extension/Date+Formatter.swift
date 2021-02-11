@@ -23,6 +23,11 @@ public extension Date {
     return formatter.string(from: self)
   }
 
+  func stringMMddyyyy(with join: String = ".") -> String {
+    let formatter = DateFormatter.dateFormatterOfMMddyyyy(with: join)
+    return formatter.string(from: self)
+  }
+
   func stringYYYYMMMDD(lang: String) -> String {
     let formatter = DateFormatter.dateFormatterOfyyyyMMMdd(lang: lang)
     return formatter.string(from: self)
@@ -105,6 +110,13 @@ public extension DateFormatter {
       }
     }
     return Static.dateFormatter
+  }
+
+  static func dateFormatterOfMMddyyyy(with join: String = ".") -> DateFormatter {
+    return DateFormatter().apply {
+      $0.dateFormat = "MM\(join)dd\(join)yyyy"
+      $0.calendar = Foundation.Calendar.gregorian
+    }
   }
 
   static func dateFormatterOfyyyyMMdd(with join: String = ".") -> DateFormatter {
