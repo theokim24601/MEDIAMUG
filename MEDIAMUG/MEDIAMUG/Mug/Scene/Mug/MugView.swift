@@ -10,21 +10,30 @@ import Combine
 import WaterfallGrid
 import ExytePopupView
 
-
 public struct MugView: View {
   @ObservedObject var viewModel: MugViewModel
 
   public var body: some View {
-    #if targetEnvironment(macCatalyst)
-    return createCatalystBody()
-    #else
-    return createIOSBody()
-    #endif
+    if isMac {
+      return AnyView(createCatalystBody())
+    } else {
+      return AnyView(createIOSBody())
+    }
   }
 }
 
 // MARK: - Shared
 extension MugView {
+  func createLogoItem() -> some View {
+    Button(action: {
+      viewModel.apply(.onAppear)
+    }) {
+      Image("icon")
+        .imageScale(.large)
+        .foregroundColor(.primary)
+    }
+  }
+
   func createRefreshButton() -> some View {
     Button(action: {
       viewModel.apply(.onAppear)
@@ -36,7 +45,13 @@ extension MugView {
   }
 
   func getColumns(_ size: CGSize) -> Int {
-    Int(max(size.width / 320, 1))
+    if isIphone {
+      return 2
+    } else if isIpad {
+      return Int(max(size.width / 320, 3))
+    } else {
+      return Int(max(size.width / 320, 2))
+    }
   }
 }
 
@@ -44,23 +59,25 @@ extension MugView {
 extension MugView {
   func createIOSBody() -> some View {
     GeometryReader { geometry in
-      ZStack {
-        NavigationView {
-          VStack {
-            createIOSGrid(geometry.size)
-              .navigationTitle("MEDIAMUG")
-              .navigationBarItems(
-                trailing:
-                  HStack(spacing: 16) {
-                    createRefreshButton()
-                    createInputPopButton()
-                  }
-              )
-          }
+      NavigationView {
+        VStack {
+          createIOSGrid(geometry.size)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { viewModel.apply(.onAppear) })
+        .navigationTitle("MEDIAMUG")
+        .navigationBarItems(
+          leading:
+            HStack {
+              createLogoItem()
+            },
+          trailing:
+            HStack(spacing: 16) {
+              createRefreshButton()
+              createInputPopButton()
+            }
+        )
       }
+      .navigationViewStyle(StackNavigationViewStyle())
+      .onAppear(perform: { viewModel.apply(.onAppear) })
       .popup(isPresented: $viewModel.showInputPopup, type: .toast, position: .bottom, animation: .easeInOut(duration: 0.1), closeOnTap: false) {
         createNewLinkPopup(geometry.size)
       }
@@ -94,7 +111,8 @@ extension MugView {
     if viewModel.dataSource.isEmpty {
       return AnyView(WaterfallGrid(0..<1, id:\.self) { _ in
         HStack(spacing: 8) {
-          Text("Try adding your first link")
+          Text("Try adding\nyour first link")
+            .multilineTextAlignment(.center)
             .lineLimit(3)
             .font(Font.system(size: 15, weight: .medium))
             .foregroundColor(Color.secondary.opacity(0.8))
@@ -296,23 +314,25 @@ extension MugView {
 extension MugView {
   func createCatalystBody() -> some View {
     GeometryReader { geometry in
-      ZStack {
-        NavigationView {
-          VStack {
-            createCatalystInput(geometry.size)
-            createCatalystGrid(geometry.size)
-              .navigationTitle("MEDIAMUG")
-              .navigationBarItems(
-                trailing:
-                  HStack(spacing: 16) {
-                    createRefreshButton()
-                  }
-              )
-          }
+      NavigationView {
+        VStack {
+          createCatalystInput(geometry.size)
+          createCatalystGrid(geometry.size)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: { viewModel.apply(.onAppear) })
+        .navigationTitle("MEDIAMUG")
+        .navigationBarItems(
+          leading:
+            HStack {
+              createLogoItem()
+            },
+          trailing:
+            HStack(spacing: 16) {
+              createRefreshButton()
+            }
+        )
       }
+      .navigationViewStyle(StackNavigationViewStyle())
+      .onAppear(perform: { viewModel.apply(.onAppear) })
     }
     .edgesIgnoringSafeArea([.top, .bottom])
 //    .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "NSWindowDidBecomeMainNotification"))) { _ in

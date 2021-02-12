@@ -13,12 +13,10 @@ class LinkViewModel: ObservableObject, Identifiable, Hashable {
   private var cancellables = Set<AnyCancellable>()
 
   // MARK: - Output
-  @Published var loading: Bool = true
-
-  @Published var icon: UIImage?
+  @Published var icon: UIImage = UIImage(named: "icon")!
   @Published var host: String = ""
   @Published var videoUrl: URL?
-  @Published var image: UIImage?
+  @Published var image: UIImage = UIImage(named: "bg_default")!
   @Published var title: String = ""
   @Published var dateString: String = ""
 

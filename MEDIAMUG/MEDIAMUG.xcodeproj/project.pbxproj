@@ -31,6 +31,7 @@
 		91909E4425D2AD8D001D1DE5 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91909E4325D2AD8D001D1DE5 /* LinkItem.swift */; };
 		91909E4725D2CE4D001D1DE5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91909E4625D2CE4D001D1DE5 /* CloudKit.framework */; };
 		91909E4A25D2F33E001D1DE5 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91909E4925D2F33E001D1DE5 /* LinkViewModel.swift */; };
+		9198EA5A25D57278007E3163 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9198EA5925D57278007E3163 /* AppUtils.swift */; };
 		FC16C22E76F46D02CE6FA26E /* Pods_MEDIAMUG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5573A65A46909BFFD278749E /* Pods_MEDIAMUG.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		91909E4325D2AD8D001D1DE5 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
 		91909E4625D2CE4D001D1DE5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		91909E4925D2F33E001D1DE5 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
+		9198EA5925D57278007E3163 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
 		E2490D33CDF392B184591C24 /* Pods-MEDIAMUG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEDIAMUG.debug.xcconfig"; path = "Target Support Files/Pods-MEDIAMUG/Pods-MEDIAMUG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +149,7 @@
 				91909E0825D289C7001D1DE5 /* SceneDelegate.swift */,
 				91909E0C25D289C9001D1DE5 /* Assets.xcassets */,
 				91909E1125D289C9001D1DE5 /* LaunchScreen.storyboard */,
+				9198EA5925D57278007E3163 /* AppUtils.swift */,
 				91909E2025D28B30001D1DE5 /* Mug */,
 				91909E1F25D28B1C001D1DE5 /* Config */,
 				91909E0E25D289C9001D1DE5 /* Preview Content */,
@@ -365,6 +368,7 @@
 				91279EE825D3D21900888075 /* ClearButton.swift in Sources */,
 				91909E4425D2AD8D001D1DE5 /* LinkItem.swift in Sources */,
 				91279EAE25D2F5EA00888075 /* ContentView.swift in Sources */,
+				9198EA5A25D57278007E3163 /* AppUtils.swift in Sources */,
 				91279F6625D50B4300888075 /* Double+Date.swift in Sources */,
 				91909E3525D28B30001D1DE5 /* Video.swift in Sources */,
 				91909E2E25D28B30001D1DE5 /* MugViewModel.swift in Sources */,
@@ -514,6 +518,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MEDIAMUG/MEDIAMUG.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MEDIAMUG/Preview Content\"";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				ENABLE_PREVIEWS = YES;
@@ -540,6 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MEDIAMUG/MEDIAMUG.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"MEDIAMUG/Preview Content\"";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				ENABLE_PREVIEWS = YES;

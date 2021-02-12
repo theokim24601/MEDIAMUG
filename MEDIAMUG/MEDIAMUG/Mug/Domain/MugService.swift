@@ -7,12 +7,12 @@
 
 import SwiftUI
 import Combine
-import LinkPresentation
 
 protocol MugService {
   func getLinkItems() -> AnyPublisher<[LinkItem], MugError>
   func addNewLink(urlString: String) -> AnyPublisher<[LinkItem], MugError>
   func deleteLink(id: String) -> AnyPublisher<[LinkItem], MugError>
+  func existLink(urlString: String) -> AnyPublisher<Bool, MugError>
 }
 
 class MugMediaService: MugService {
@@ -24,7 +24,8 @@ class MugMediaService: MugService {
 
   init() {
     if isFirstLoad {
-      linkItems = ["https://developer.apple.com/news/"].map(LinkItem.init)
+//      linkItems = ["https://www.youtube.com/watch?v=GEZhD3J89ZE"].map(LinkItem.init)
+      linkItems = []
       isFirstLoad = false
     }
   }
@@ -50,6 +51,15 @@ class MugMediaService: MugService {
   func deleteLink(id: String) -> AnyPublisher<[LinkItem], MugError> {
     linkItems.removeAll(where: { $0.id == id })
     return getLinkItems()
+  }
+
+  func existLink(urlString: String) -> AnyPublisher<Bool, MugError> {
+    let exist = linkItems.contains(where: { $0.urlString == urlString })
+    return Just(exist)
+      .mapError { _ -> MugError in
+        .invalidUrl
+      }
+      .eraseToAnyPublisher()
   }
 }
 

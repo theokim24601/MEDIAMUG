@@ -92,7 +92,23 @@ final class MugViewModel: ObservableObject, Identifiable {
     Publishers.Merge3(reloadPublisher, newLinkPublisher, deletePublisher)
       .subscribe(responseSubject)
       .store(in: &cancellables)
-//
+
+    copyClipSubject
+      .handleEvents(receiveOutput: { [weak self] clipString in
+        self?.clipString = clipString
+      })
+      .flatMap { [mugService] urlString in
+        mugService.existLink(urlString: urlString)
+          .map { !$0 && urlString.isValidLink }
+          .catch { [weak self] error -> Empty<Bool, Never> in
+            self?.errorSubject.send(error)
+            return .init()
+          }
+      }
+      .receive(on: DispatchQueue.main)
+      .assign(to: \.showClipboardToast, on: self)
+      .store(in: &cancellables)
+
 //    onAppearSubject
 //      .map { .topics }
 //      .subscribe(trackingSubject)
@@ -118,15 +134,6 @@ final class MugViewModel: ObservableObject, Identifiable {
       .map { _ in "" }
       .receive(on: DispatchQueue.main)
       .assign(to: \.newLink, on: self)
-      .store(in: &cancellables)
-
-    copyClipSubject
-      .receive(on: DispatchQueue.main)
-      .handleEvents(receiveOutput: { [weak self] clipString in
-        self?.clipString = clipString
-      })
-      .map { $0.isValidLink }
-      .assign(to: \.showClipboardToast, on: self)
       .store(in: &cancellables)
 
     errorSubject
