@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  VIDEOMUG
+//  MEDIAMUG
 //
 //  Created by hbkim on 2021/02/08.
 //
