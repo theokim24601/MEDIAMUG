@@ -18,6 +18,14 @@
 		91279F5B25D41C6900888075 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279F5A25D41C6900888075 /* Calendar+Extension.swift */; };
 		91279F5E25D41D4900888075 /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279F5D25D41D4900888075 /* Apply.swift */; };
 		91279F6625D50B4300888075 /* Double+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279F6525D50B4300888075 /* Double+Date.swift */; };
+		918FCC8925D68466007A18ED /* Mug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCC8825D68466007A18ED /* Mug.swift */; };
+		918FCC8D25D68DE2007A18ED /* MugRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCC8C25D68DE2007A18ED /* MugRepository.swift */; };
+		918FCC9125D68E0B007A18ED /* MugError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCC9025D68E0B007A18ED /* MugError.swift */; };
+		918FCC9B25D69F26007A18ED /* CoreDataContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCC9A25D69F26007A18ED /* CoreDataContextProvider.swift */; };
+		918FCCA525D6A086007A18ED /* LinkItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCCA425D6A086007A18ED /* LinkItemModel.swift */; };
+		918FCCAA25D6AE57007A18ED /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCCA925D6AE57007A18ED /* CoreDataRepository.swift */; };
+		918FCCAE25D6B564007A18ED /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCCAD25D6B564007A18ED /* LocalRepository.swift */; };
+		918FCCB525D6D465007A18ED /* CoreData+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCCB425D6D465007A18ED /* CoreData+Convenience.swift */; };
 		91909E0725D289C7001D1DE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91909E0625D289C7001D1DE5 /* AppDelegate.swift */; };
 		91909E0925D289C7001D1DE5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91909E0825D289C7001D1DE5 /* SceneDelegate.swift */; };
 		91909E0D25D289C9001D1DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91909E0C25D289C9001D1DE5 /* Assets.xcassets */; };
@@ -32,6 +40,7 @@
 		91909E4725D2CE4D001D1DE5 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91909E4625D2CE4D001D1DE5 /* CloudKit.framework */; };
 		91909E4A25D2F33E001D1DE5 /* LinkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91909E4925D2F33E001D1DE5 /* LinkViewModel.swift */; };
 		9198EA5A25D57278007E3163 /* AppUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9198EA5925D57278007E3163 /* AppUtils.swift */; };
+		9198EA9225D67CF1007E3163 /* MEDIAMUG.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9198EA9025D67CF1007E3163 /* MEDIAMUG.xcdatamodeld */; };
 		FC16C22E76F46D02CE6FA26E /* Pods_MEDIAMUG.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5573A65A46909BFFD278749E /* Pods_MEDIAMUG.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +58,14 @@
 		91279F5A25D41C6900888075 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 		91279F5D25D41D4900888075 /* Apply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
 		91279F6525D50B4300888075 /* Double+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Date.swift"; sourceTree = "<group>"; };
+		918FCC8825D68466007A18ED /* Mug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mug.swift; sourceTree = "<group>"; };
+		918FCC8C25D68DE2007A18ED /* MugRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MugRepository.swift; sourceTree = "<group>"; };
+		918FCC9025D68E0B007A18ED /* MugError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MugError.swift; sourceTree = "<group>"; };
+		918FCC9A25D69F26007A18ED /* CoreDataContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataContextProvider.swift; sourceTree = "<group>"; };
+		918FCCA425D6A086007A18ED /* LinkItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItemModel.swift; sourceTree = "<group>"; };
+		918FCCA925D6AE57007A18ED /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		918FCCAD25D6B564007A18ED /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
+		918FCCB425D6D465007A18ED /* CoreData+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Convenience.swift"; sourceTree = "<group>"; };
 		91909E0325D289C7001D1DE5 /* MEDIAMUG.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEDIAMUG.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91909E0625D289C7001D1DE5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91909E0825D289C7001D1DE5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +83,7 @@
 		91909E4625D2CE4D001D1DE5 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		91909E4925D2F33E001D1DE5 /* LinkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewModel.swift; sourceTree = "<group>"; };
 		9198EA5925D57278007E3163 /* AppUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtils.swift; sourceTree = "<group>"; };
+		9198EA9125D67CF1007E3163 /* MEDIAMUG.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MEDIAMUG.xcdatamodel; sourceTree = "<group>"; };
 		E2490D33CDF392B184591C24 /* Pods-MEDIAMUG.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MEDIAMUG.debug.xcconfig"; path = "Target Support Files/Pods-MEDIAMUG/Pods-MEDIAMUG.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,14 +109,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		91279EB025D2FEB800888075 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-				91279EB125D2FEE300888075 /* Storage.swift */,
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
 		91279EB825D31CCA00888075 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 				91279F5A25D41C6900888075 /* Calendar+Extension.swift */,
 				91279F5D25D41D4900888075 /* Apply.swift */,
 				91279F6525D50B4300888075 /* Double+Date.swift */,
+				91279EB125D2FEE300888075 /* Storage.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -119,6 +130,42 @@
 				91279EEA25D3D23700888075 /* PlaceHolder.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		918FCC8B25D68DD6007A18ED /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				918FCCA325D6A080007A18ED /* Model */,
+				918FCCAC25D6B54B007A18ED /* Repository */,
+				918FCC8C25D68DE2007A18ED /* MugRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		918FCCA325D6A080007A18ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				918FCCA425D6A086007A18ED /* LinkItemModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		918FCCAC25D6B54B007A18ED /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				918FCCAD25D6B564007A18ED /* LocalRepository.swift */,
+				918FCCA925D6AE57007A18ED /* CoreDataRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		918FCCB325D6D44B007A18ED /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				918FCC9A25D69F26007A18ED /* CoreDataContextProvider.swift */,
+				918FCCB425D6D465007A18ED /* CoreData+Convenience.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		91909DFA25D289C7001D1DE5 = {
@@ -145,11 +192,14 @@
 			isa = PBXGroup;
 			children = (
 				91909E3725D28B60001D1DE5 /* MEDIAMUG.entitlements */,
+				9198EA9025D67CF1007E3163 /* MEDIAMUG.xcdatamodeld */,
 				91909E0625D289C7001D1DE5 /* AppDelegate.swift */,
 				91909E0825D289C7001D1DE5 /* SceneDelegate.swift */,
 				91909E0C25D289C9001D1DE5 /* Assets.xcassets */,
 				91909E1125D289C9001D1DE5 /* LaunchScreen.storyboard */,
 				9198EA5925D57278007E3163 /* AppUtils.swift */,
+				918FCCB325D6D44B007A18ED /* CoreData */,
+				91279EB825D31CCA00888075 /* Extension */,
 				91909E2025D28B30001D1DE5 /* Mug */,
 				91909E1F25D28B1C001D1DE5 /* Config */,
 				91909E0E25D289C9001D1DE5 /* Preview Content */,
@@ -176,8 +226,8 @@
 		91909E2025D28B30001D1DE5 /* Mug */ = {
 			isa = PBXGroup;
 			children = (
-				91279EB825D31CCA00888075 /* Extension */,
 				91909E2125D28B30001D1DE5 /* Scene */,
+				918FCC8B25D68DD6007A18ED /* Data */,
 				91909E2A25D28B30001D1DE5 /* Domain */,
 			);
 			path = Mug;
@@ -216,9 +266,9 @@
 		91909E2A25D28B30001D1DE5 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				91279EB025D2FEB800888075 /* Extension */,
 				91909E2C25D28B30001D1DE5 /* Entities */,
 				91909E2B25D28B30001D1DE5 /* MugService.swift */,
+				918FCC8825D68466007A18ED /* Mug.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -228,6 +278,7 @@
 			children = (
 				91909E2D25D28B30001D1DE5 /* Video.swift */,
 				91909E4325D2AD8D001D1DE5 /* LinkItem.swift */,
+				918FCC9025D68E0B007A18ED /* MugError.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -358,10 +409,12 @@
 			files = (
 				91909E0725D289C7001D1DE5 /* AppDelegate.swift in Sources */,
 				91279F5B25D41C6900888075 /* Calendar+Extension.swift in Sources */,
+				918FCCB525D6D465007A18ED /* CoreData+Convenience.swift in Sources */,
 				91279EB225D2FEE300888075 /* Storage.swift in Sources */,
 				91279EBA25D31CDF00888075 /* String+Validator.swift in Sources */,
 				91909E4A25D2F33E001D1DE5 /* LinkViewModel.swift in Sources */,
 				91909E0925D289C7001D1DE5 /* SceneDelegate.swift in Sources */,
+				918FCCAA25D6AE57007A18ED /* CoreDataRepository.swift in Sources */,
 				91279F5825D41C5E00888075 /* Date+Formatter.swift in Sources */,
 				91909E3425D28B30001D1DE5 /* MugService.swift in Sources */,
 				91909E3225D28B30001D1DE5 /* MugView.swift in Sources */,
@@ -370,11 +423,18 @@
 				91279EAE25D2F5EA00888075 /* ContentView.swift in Sources */,
 				9198EA5A25D57278007E3163 /* AppUtils.swift in Sources */,
 				91279F6625D50B4300888075 /* Double+Date.swift in Sources */,
+				9198EA9225D67CF1007E3163 /* MEDIAMUG.xcdatamodeld in Sources */,
 				91909E3525D28B30001D1DE5 /* Video.swift in Sources */,
 				91909E2E25D28B30001D1DE5 /* MugViewModel.swift in Sources */,
+				918FCC8925D68466007A18ED /* Mug.swift in Sources */,
+				918FCCA525D6A086007A18ED /* LinkItemModel.swift in Sources */,
+				918FCCAE25D6B564007A18ED /* LocalRepository.swift in Sources */,
 				91279EE425D3D20400888075 /* ScaleEffectButtonStyle.swift in Sources */,
+				918FCC9B25D69F26007A18ED /* CoreDataContextProvider.swift in Sources */,
+				918FCC9125D68E0B007A18ED /* MugError.swift in Sources */,
 				91909E4125D28E95001D1DE5 /* LinkView.swift in Sources */,
 				91279EB625D3034300888075 /* InputAlert.swift in Sources */,
+				918FCC8D25D68DE2007A18ED /* MugRepository.swift in Sources */,
 				91279EEB25D3D23700888075 /* PlaceHolder.swift in Sources */,
 				91279F5E25D41D4900888075 /* Apply.swift in Sources */,
 			);
@@ -586,6 +646,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9198EA9025D67CF1007E3163 /* MEDIAMUG.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9198EA9125D67CF1007E3163 /* MEDIAMUG.xcdatamodel */,
+			);
+			currentVersion = 9198EA9125D67CF1007E3163 /* MEDIAMUG.xcdatamodel */;
+			path = MEDIAMUG.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 91909DFB25D289C7001D1DE5 /* Project object */;
 }

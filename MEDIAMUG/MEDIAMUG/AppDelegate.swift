@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import CoreData
+import CloudKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

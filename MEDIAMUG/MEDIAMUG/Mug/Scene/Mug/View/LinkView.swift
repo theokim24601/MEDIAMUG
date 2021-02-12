@@ -20,7 +20,8 @@ struct LinkView: View {
       } else {
         createIOSLink()
       }
-    }.frame(width: width)
+    }
+    .frame(width: width)
   }
 }
 

@@ -17,4 +17,12 @@ struct LinkItem: Codable, Hashable {
   init(urlString: String) {
     self.urlString = urlString
   }
+
+  init(id: String, urlString: String, createdAt: Date, updatedAt: Date, read: Bool) {
+    self.id = id
+    self.urlString = urlString
+    self.createdAt = createdAt
+    self.updatedAt = updatedAt
+    self.read = read
+  }
 }

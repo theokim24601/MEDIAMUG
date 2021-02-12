@@ -12,15 +12,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
+  lazy var contextProvider: CoreDataContextProvider = { CoreDataContextProvider() }()
+
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
     options connectionOptions: UIScene.ConnectionOptions
   ) {
-    let contentView = MugView(viewModel: MugViewModel(mugService: MugMediaService()))
     if let windowScene = scene as? UIWindowScene {
       let window = UIWindow(windowScene: windowScene)
-      window.rootViewController = UIHostingController(rootView: contentView)
+      window.rootViewController = UIHostingController(
+        rootView: MugView(
+          viewModel: MugViewModel(
+            mugService: MugMediaService(
+              mug: MugRepository(persistentContainer: contextProvider.persistentContainer)
+            )
+          )
+        )
+      )
       self.window = window
       window.makeKeyAndVisible()
     }

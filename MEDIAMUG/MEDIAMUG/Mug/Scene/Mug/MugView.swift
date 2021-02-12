@@ -93,6 +93,11 @@ extension MugView {
       guard let clipString = UIPasteboard.general.string else { return }
       viewModel.apply(.copyClip(clipString))
     }
+    .onReceive(NotificationCenter.default.publisher(for: .didAcceptRemoteChanges)) { _ in
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        viewModel.apply(.onAppear)
+      }
+    }
   }
 
   func createIOSGrid(_ size: CGSize) -> some View {
@@ -335,6 +340,11 @@ extension MugView {
       .onAppear(perform: { viewModel.apply(.onAppear) })
     }
     .edgesIgnoringSafeArea([.top, .bottom])
+    .onReceive(NotificationCenter.default.publisher(for: .didAcceptRemoteChanges)) { _ in
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        viewModel.apply(.onAppear)
+      }
+    }
 //    .onReceive(NotificationCenter.default.publisher(for: Notification.Name(rawValue: "NSWindowDidBecomeMainNotification"))) { _ in
 //      guard let clipString = UIPasteboard.general.string else { return }
 //      viewModel.apply(.copyClip(clipString))
@@ -402,8 +412,8 @@ extension MugView {
   }
 }
 
-struct TopicsView_Previews: PreviewProvider {
-  static var previews: some View {
-    MugView(viewModel: MugViewModel(mugService: MugMediaService()))
-  }
-}
+//struct TopicsView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    MugView(viewModel: MugViewModel(mugService: MugMediaService(mug: MugRepository(context: Core))))
+//  }
+//}

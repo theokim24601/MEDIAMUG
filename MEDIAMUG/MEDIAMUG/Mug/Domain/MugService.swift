@@ -16,26 +16,30 @@ protocol MugService {
 }
 
 class MugMediaService: MugService {
-
-  @Storage(key: "link_items", defaultValue: [])
-  var linkItems: [LinkItem]
   @Storage(key: "is_first_load", defaultValue: true)
   var isFirstLoad: Bool
 
-  init() {
+  private let mug: Mug
+  init(mug: Mug) {
+    self.mug = mug
     if isFirstLoad {
 //      linkItems = ["https://www.youtube.com/watch?v=GEZhD3J89ZE"].map(LinkItem.init)
-      linkItems = []
       isFirstLoad = false
     }
   }
 
   func getLinkItems() -> AnyPublisher<[LinkItem], MugError> {
-    return Just(linkItems)
-      .mapError { _ -> MugError in
-        .invalidUrl
-      }
-      .eraseToAnyPublisher()
+    do {
+      let linkItems = try mug.getAll()
+      return Just(linkItems)
+        .mapError { _ -> MugError in
+          .failedToLoad
+        }
+        .eraseToAnyPublisher()
+    } catch {
+      return Fail(error: MugError.failedToLoad)
+        .eraseToAnyPublisher()
+    }
   }
 
   func addNewLink(urlString: String) -> AnyPublisher<[LinkItem], MugError> {
@@ -44,25 +48,31 @@ class MugMediaService: MugService {
         .eraseToAnyPublisher()
     }
     let linkItem = LinkItem(urlString: urlString)
-    linkItems.insert(linkItem, at: 0)
-    return getLinkItems()
+    do {
+      try mug.create(linkItem)
+      return getLinkItems()
+    } catch {
+      return Fail(error: MugError.failedToCreate)
+        .eraseToAnyPublisher()
+    }
   }
 
   func deleteLink(id: String) -> AnyPublisher<[LinkItem], MugError> {
-    linkItems.removeAll(where: { $0.id == id })
-    return getLinkItems()
+    do {
+      try mug.delete(id)
+      return getLinkItems()
+    } catch {
+      return Fail(error: MugError.failedToDelete)
+        .eraseToAnyPublisher()
+    }
   }
 
   func existLink(urlString: String) -> AnyPublisher<Bool, MugError> {
-    let exist = linkItems.contains(where: { $0.urlString == urlString })
+    let exist = mug.exist(urlString)
     return Just(exist)
       .mapError { _ -> MugError in
-        .invalidUrl
+        .failedToLoad
       }
       .eraseToAnyPublisher()
   }
-}
-
-enum MugError: Error {
-  case invalidUrl
 }
