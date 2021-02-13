@@ -2,7 +2,7 @@
   <img src="./assets/image.png" />
 </p>
 
-## [MEDIAMUG](itunes.apple.com/app/apple-store/id1553267032)
+## [MEDIAMUG](https://itunes.apple.com/app/apple-store/id1553267032)
 
 Collect the links you like. enjoy the content you need, anytime, anywhere, any device
 
