@@ -43,11 +43,11 @@ class MugMediaService: MugService {
   }
 
   func addNewLink(urlString: String) -> AnyPublisher<[LinkItem], MugError> {
-    guard urlString.isValidLink else {
+    guard let newUrl = urlString.refineLink(), newUrl.isValidLink else {
       return Fail(error: MugError.invalidUrl)
         .eraseToAnyPublisher()
     }
-    let linkItem = LinkItem(urlString: urlString)
+    let linkItem = LinkItem(urlString: newUrl)
     do {
       try mug.create(linkItem)
       return getLinkItems()
@@ -68,7 +68,11 @@ class MugMediaService: MugService {
   }
 
   func existLink(urlString: String) -> AnyPublisher<Bool, MugError> {
-    let exist = mug.exist(urlString)
+    guard let newUrl = urlString.refineLink() else {
+      return Fail(error: MugError.invalidUrl)
+        .eraseToAnyPublisher()
+    }
+    let exist = mug.exist(newUrl)
     return Just(exist)
       .mapError { _ -> MugError in
         .failedToLoad

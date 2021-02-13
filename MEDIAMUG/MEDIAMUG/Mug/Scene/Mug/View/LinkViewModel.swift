@@ -90,12 +90,17 @@ extension LinkViewModel {
   }
 
   func loadMetadata() {
-    guard let url = URL(string: linkItem.urlString) else {
+    guard let newUrl = linkItem.urlString.refineLink(), let url = URL(string: newUrl) else {
       return
     }
     let metadataProvider = LPMetadataProvider()
     metadataProvider.startFetchingMetadata(for: url) { [weak self] (metadata, error) in
       guard let data = metadata, error == nil else {
+        DispatchQueue.main.async {
+          self?.url = url
+          self?.host = url.host ?? "undefined"
+          self?.title = "undefined"
+        }
         return
       }
       data.imageProvider?.loadObject(ofClass: UIImage.self) { image, error  in

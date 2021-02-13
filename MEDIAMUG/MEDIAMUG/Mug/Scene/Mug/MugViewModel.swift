@@ -99,7 +99,7 @@ final class MugViewModel: ObservableObject, Identifiable {
       })
       .flatMap { [mugService] urlString in
         mugService.existLink(urlString: urlString)
-          .map { !$0 && urlString.isValidLink }
+          .map { !$0 && urlString.refineLink() != nil }
           .catch { [weak self] error -> Empty<Bool, Never> in
             self?.errorSubject.send(error)
             return .init()

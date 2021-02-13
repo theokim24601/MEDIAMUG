@@ -193,8 +193,8 @@ extension MugView {
               .font(Font.system(size: 14, weight: .medium))
               .foregroundColor(.red)
 
-            viewModel.newLink.isValidLink ? validImage : invalidImage
-            viewModel.newLink.isValidLink ? validText : invalidText
+            viewModel.newLink.refineLink() != nil ? validImage : invalidImage
+            viewModel.newLink.refineLink() != nil ? validText : invalidText
             Spacer()
           }
         }
@@ -243,11 +243,11 @@ extension MugView {
               .padding()
               .frame(minWidth: 0, maxWidth: .infinity, minHeight: 40, maxHeight: 40)
               .foregroundColor(.white)
-              .background(viewModel.newLink.isValidLink ? Color.blue : Color.gray)
+              .background(viewModel.newLink.refineLink() != nil ? Color.blue : Color.gray)
               .cornerRadius(5)
           })
           .buttonStyle(ScaleEffectButtonStyle())
-          .disabled(!viewModel.newLink.isValidLink)
+          .disabled(viewModel.newLink.refineLink() == nil)
         }
       }
       .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
@@ -400,8 +400,8 @@ extension MugView {
       }) {
         Image(systemName: "plus.circle")
           .imageScale(.large)
-          .foregroundColor(viewModel.newLink.isValidLink ? .green : .gray)
-      }.disabled(!viewModel.newLink.isValidLink)
+          .foregroundColor(viewModel.newLink.refineLink() != nil ? .green : .gray)
+      }.disabled(viewModel.newLink.refineLink() == nil)
     }
     .padding(EdgeInsets(top: 16, leading: 24, bottom: 16, trailing: 24))
     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 48, maxHeight: 48)
