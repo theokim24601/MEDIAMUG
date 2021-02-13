@@ -18,6 +18,7 @@
 		91279F5B25D41C6900888075 /* Calendar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279F5A25D41C6900888075 /* Calendar+Extension.swift */; };
 		91279F5E25D41D4900888075 /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279F5D25D41D4900888075 /* Apply.swift */; };
 		91279F6625D50B4300888075 /* Double+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91279F6525D50B4300888075 /* Double+Date.swift */; };
+		915DCED525D7AB440094CA73 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 915DCED425D7AB440094CA73 /* GoogleService-Info.plist */; };
 		918FCC8925D68466007A18ED /* Mug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCC8825D68466007A18ED /* Mug.swift */; };
 		918FCC8D25D68DE2007A18ED /* MugRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCC8C25D68DE2007A18ED /* MugRepository.swift */; };
 		918FCC9125D68E0B007A18ED /* MugError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 918FCC9025D68E0B007A18ED /* MugError.swift */; };
@@ -58,6 +59,7 @@
 		91279F5A25D41C6900888075 /* Calendar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extension.swift"; sourceTree = "<group>"; };
 		91279F5D25D41D4900888075 /* Apply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
 		91279F6525D50B4300888075 /* Double+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Date.swift"; sourceTree = "<group>"; };
+		915DCED425D7AB440094CA73 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../config/mediamug/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		918FCC8825D68466007A18ED /* Mug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mug.swift; sourceTree = "<group>"; };
 		918FCC8C25D68DE2007A18ED /* MugRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MugRepository.swift; sourceTree = "<group>"; };
 		918FCC9025D68E0B007A18ED /* MugError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MugError.swift; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 		91909E1F25D28B1C001D1DE5 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				915DCED425D7AB440094CA73 /* GoogleService-Info.plist */,
 				91909E1425D289C9001D1DE5 /* Info.plist */,
 			);
 			path = Config;
@@ -305,6 +308,8 @@
 				91909E0025D289C7001D1DE5 /* Frameworks */,
 				91909E0125D289C7001D1DE5 /* Resources */,
 				334D4C08C3C6F7A5B6371EBC /* [CP] Embed Pods Frameworks */,
+				915DCF1925D7ADBD0094CA73 /* Crashlytics Run Script */,
+				915DCF1B25D7B0A80094CA73 /* Upload symbol */,
 			);
 			buildRules = (
 			);
@@ -353,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91909E1325D289C9001D1DE5 /* LaunchScreen.storyboard in Resources */,
+				915DCED525D7AB440094CA73 /* GoogleService-Info.plist in Resources */,
 				91909E1025D289C9001D1DE5 /* Preview Assets.xcassets in Resources */,
 				91909E0D25D289C9001D1DE5 /* Assets.xcassets in Resources */,
 			);
@@ -399,6 +405,43 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MEDIAMUG/Pods-MEDIAMUG-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		915DCF1925D7ADBD0094CA73 /* Crashlytics Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+			);
+			name = "Crashlytics Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
+		915DCF1B25D7B0A80094CA73 /* Upload symbol */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Upload symbol";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/FirebaseCrashlytics/upload-symbols -gsp ${PROJECT_DIR}/../../config/mediamug/GoogleService-Info.plist -p ios ${DWARF_DSYM_FOLDER_PATH}\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -488,9 +531,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -552,6 +596,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -578,16 +623,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MEDIAMUG/MEDIAMUG.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MEDIAMUG/Preview Content\"";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = MEDIAMUG/Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seasons.mediamug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
@@ -605,16 +651,17 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MEDIAMUG/MEDIAMUG.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"MEDIAMUG/Preview Content\"";
 				DEVELOPMENT_TEAM = 7KW522KWZF;
 				ENABLE_PREVIEWS = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = MEDIAMUG/Config/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seasons.mediamug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;

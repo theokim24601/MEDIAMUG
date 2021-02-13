@@ -9,6 +9,12 @@ import UIKit
 import CoreData
 import CloudKit
 
+#if !targetEnvironment(macCatalyst)
+import Firebase
+import FirebaseCrashlytics
+#endif
+
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+    #if !targetEnvironment(macCatalyst)
+    FirebaseApp.configure()
+    Crashlytics.crashlytics()
+    #endif
     return true
   }
 
