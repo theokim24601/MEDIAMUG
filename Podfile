@@ -5,7 +5,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 def sdk
-#  pod 'Firebase/Analytics'
+  pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
 end
 
