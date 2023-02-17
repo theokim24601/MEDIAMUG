@@ -22,7 +22,7 @@ class CoreDataContextProvider {
     let cloudStoreDescription = NSPersistentStoreDescription(url: cloudStoreLocation)
     cloudStoreDescription.configuration = "Cloud"
     cloudStoreDescription.cloudKitContainerOptions =
-      NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.seasons.mediamug")
+      NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.kim.theo.mediamug")
     cloudStoreDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
     cloudStoreDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
 

@@ -12,7 +12,7 @@ end
 target 'MEDIAMUG' do
   project 'MEDIAMUG/MEDIAMUG'
 
-  sdk
+#  sdk
   pod 'WaterfallGrid'
   pod 'ExytePopupView'
   pod 'YouTubePlayer'
